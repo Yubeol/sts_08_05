@@ -17,14 +17,20 @@ public class PrintDanServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		String inputedDan = request.getParameter("dan");
+		String inputedLimit = request.getParameter(inputedDan);
 		
 		if (inputedDan == null) {
 			inputedDan = "1";
 		}
 		
+		if (inputedLimit == null) {
+			inputedLimit = "1";
+		}
+		
 		System.out.println(inputedDan);
 
 		int dan = Integer.parseInt(inputedDan);
+		int limit = Integer.parseInt(inputedLimit);
 		
 		response.getWriter().append("==%d단==<br>");
 		
