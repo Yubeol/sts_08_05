@@ -8,18 +8,26 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/printDan=8")
+@WebServlet("/printDan")
 public class PrintDanServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
+		
+		String inputedDan = request.getParameter("dan");
+		
+		if (inputedDan == null) {
+			inputedDan = "1";
+		}
+		
+		System.out.println(inputedDan);
 
-		response.getWriter().append("==8단==<br>");
-
-		int dan = 8;
-
+		int dan = Integer.parseInt(inputedDan);
+		
+		response.getWriter().append("==%d단==<br>");
+		
 		for (int i = 1; i <= 9; i++) {
 			response.getWriter().append(String.format("%d * %d = %d<br>", dan, i, dan * i));
 		}
