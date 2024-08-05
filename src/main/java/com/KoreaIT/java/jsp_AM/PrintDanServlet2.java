@@ -16,7 +16,7 @@ public class PrintDanServlet2 extends HttpServlet {
 
 		response.setContentType("text/html;charset=UTF-8");
 
-		response.getWriter().append("==8단==<br>");
+		response.getWriter().append("==9단==<br>");
 
 		int dan = 9;
 
