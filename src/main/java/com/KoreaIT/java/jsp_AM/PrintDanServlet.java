@@ -15,27 +15,27 @@ public class PrintDanServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
-		
+
 		String inputedDan = request.getParameter("dan");
-		String inputedLimit = request.getParameter(inputedDan);
-		
+		String inputedLimit = request.getParameter("limit");
+		String inputedColor = request.getParameter("color");
+
 		if (inputedDan == null) {
 			inputedDan = "1";
 		}
-		
+
 		if (inputedLimit == null) {
 			inputedLimit = "1";
 		}
-		
-		System.out.println(inputedDan);
 
 		int dan = Integer.parseInt(inputedDan);
 		int limit = Integer.parseInt(inputedLimit);
-		
-		response.getWriter().append("==%d단==<br>");
-		
-		for (int i = 1; i <= 9; i++) {
-			response.getWriter().append(String.format("%d * %d = %d<br>", dan, i, dan * i));
+
+		response.getWriter().append(String.format("<div style='color:%s;'>==%d단==</div>", inputedColor, dan));
+
+		for (int i = 1; i <= limit; i++) {
+			response.getWriter().append(
+					String.format("<div style=\"color:%s;\">%d * %d = %d</div>", inputedColor, dan, i, dan * i));
 		}
 
 	}
