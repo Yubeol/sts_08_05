@@ -1,4 +1,4 @@
-package com.KoreaIT.java.jsp_AM;
+package com.KoreaIT.java.jsp_AM.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
