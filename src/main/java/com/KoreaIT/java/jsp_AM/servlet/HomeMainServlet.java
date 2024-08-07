@@ -13,7 +13,13 @@ public class HomeMainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		HttpSession	session = request.getSession();
+		
+		boolean isLogined = false;
+		
+		if (session.)
+		
 		request.getRequestDispatcher("/jsp/home/main.jsp").forward(request, response);
 
 	}

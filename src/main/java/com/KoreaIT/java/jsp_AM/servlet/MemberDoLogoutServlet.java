@@ -33,7 +33,7 @@ public class MemberDoLogoutServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("클래스가 없습니다.");
+			System.out.println("클래스 x");
 			e.printStackTrace();
 		}
 
@@ -57,7 +57,7 @@ public class MemberDoLogoutServlet extends HttpServlet {
 					String.format("<script>alert('로그아웃 되었습니다.'); location.replace('../article/list');</script>"));
 
 		} catch (SQLException e) {
-			System.out.println("에러 : " + e);
+			System.out.println("에러 1 : " + e);
 		} catch (SQLErrorException e) {
 			e.getOrigin().printStackTrace();
 		} finally {

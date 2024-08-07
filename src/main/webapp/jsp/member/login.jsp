@@ -16,15 +16,12 @@
 	<h2>로그인</h2>
 
 	<script type="text/javascript">
-		var LoginForm__submitDone = false;
+		let LoginForm__submitDone = false;
 
 		function LoginForm__submit(form) {
-			if (LoginForm__submitDone) {
-				alert('이미 처리중입니다');
-				return;
 			}
-			var loginId = form.loginId.value.trim();
-			var loginPw = form.loginPw.value.trim();
+			let loginId = form.loginId.value.trim();
+			let loginPw = form.loginPw.value.trim();
 
 			console.log('form.loginId.value : ' + loginId);
 			console.log('form.loginPw.value : ' + loginPw);
@@ -40,7 +37,6 @@
 				return;
 			}
 
-			LoginForm__submitDone = true;
 			form.submit();
 
 		}

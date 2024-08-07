@@ -27,7 +27,7 @@ public class MemberDoLoginServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("클래스가 없습니다.");
+			System.out.println("클래스 x");
 			e.printStackTrace();
 		}
 
@@ -42,6 +42,8 @@ public class MemberDoLoginServlet extends HttpServlet {
 		try {
 			conn = DriverManager.getConnection(url, user, password);
 			
+			 //로그인 성공 처리
+	        //세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성
 			HttpSession session = request.getSession();
 			
 			if(session.getAttribute("loginedMember") != null) {
@@ -82,7 +84,7 @@ public class MemberDoLoginServlet extends HttpServlet {
 							memberRow.get("name")));
 
 		} catch (SQLException e) {
-			System.out.println("에러 : " + e);
+			System.out.println("에러 1: " + e);
 		} catch (SQLErrorException e) {
 			e.getOrigin().printStackTrace();
 		} finally {
