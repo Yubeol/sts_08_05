@@ -38,6 +38,7 @@ int totalCnt = (int) request.getAttribute("totalCnt");
 				<th>날짜</th>
 				<th>제목</th>
 				<th>내용</th>
+				<th>수정</th>
 				<th>삭제</th>
 			</tr>
 		</thead>
@@ -50,6 +51,7 @@ int totalCnt = (int) request.getAttribute("totalCnt");
 				<td><%=articleRow.get("regDate")%></td>
 				<td><%=articleRow.get("title")%></td>
 				<td><%=articleRow.get("body")%></td>
+				<td><a href="modify?id=<%=articleRow.get("id")%>">수정</a></td>
 				<td><a href="doDelete?id=<%=articleRow.get("id")%>">del</a></td>
 			</tr>
 			<%
