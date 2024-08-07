@@ -22,6 +22,8 @@ int totalCnt = (int) request.getAttribute("totalCnt");
 	<h2>게시물 목록</h2>
 
 	<a href="../home/main">메인 페이지로 </a>
+	<a href="write">글쓰기</a>
+	
 	<div>
 		총 게시글 수 :
 		<%=totalCnt%>
