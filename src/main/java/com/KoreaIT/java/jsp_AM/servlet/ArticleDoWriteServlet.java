@@ -14,22 +14,24 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @WebServlet("/article/doWrite")
 public class ArticleDoWriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		// DB연결
+
+		// DB 연결
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("클래스가 없습니다.");
+			System.out.println("클래스 x");
 			e.printStackTrace();
 		}
 
-		String url = "jdbc:mysql://127.0.0.1:3306/JSP_AM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull";
+		String url = "jdbc:mysql://127.0.0.1:3306/24_08_JAM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
+
 		String user = "root";
 		String password = "";
 
@@ -49,10 +51,10 @@ public class ArticleDoWriteServlet extends HttpServlet {
 			int id = DBUtil.insert(conn, sql);
 
 			response.getWriter()
-					.append(String.format("<script>alert('%d번 글이 등록되었습니다.'); location.replace('list');</script>", id));
+					.append(String.format("<script>alert('%d번 글이 등록 됨'); location.replace('list');</script>", id));
 
 		} catch (SQLException e) {
-			System.out.println("에러 : " + e);
+			System.out.println("에러 1 : " + e);
 		} finally {
 			try {
 				if (conn != null && !conn.isClosed()) {
@@ -62,6 +64,7 @@ public class ArticleDoWriteServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
