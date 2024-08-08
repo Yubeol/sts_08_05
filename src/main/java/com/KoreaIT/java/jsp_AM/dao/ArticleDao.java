@@ -1,9 +1,11 @@
 package com.KoreaIT.java.jsp_AM.dao;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.KoreaIT.java.jsp_AM.dto.Article;
 import com.KoreaIT.java.jsp_AM.util.DBUtil;
 import com.KoreaIT.java.jsp_AM.util.SecSql;
 
@@ -21,14 +23,23 @@ public class ArticleDao {
 		return DBUtil.selectRowIntValue(conn, sql);
 	}
 
-	public List<Map<String, Object>> getForPrintArticles(int limitFrom, int itemsInAPage) {
+	public List<Article> getForPrintArticles(int limitFrom, int itemsInAPage) {
 		SecSql sql = SecSql.from("SELECT A.*, M.name");
 		sql.append("FROM article AS A");
 		sql.append("INNER JOIN `member` AS M");
 		sql.append("ON A.memberId = M.id");
 		sql.append("ORDER BY id DESC");
 		sql.append("LIMIT ?, ?;", limitFrom, itemsInAPage);
-		return DBUtil.selectRows(conn, sql);
+
+		List<Map<String, Object>> articleRows = DBUtil.selectRows(conn, sql);
+
+		List<Article> articles = new ArrayList<>();
+
+		for (Map<String, Object> articleMap : articleRows) {
+			articles.add(new Article(articleMap));
+		}
+		
+		return articles;
 	}
 
 }

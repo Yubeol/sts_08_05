@@ -1,10 +1,10 @@
-package com.KoreaIT.java.jsp_AM.contoller;
+package com.KoreaIT.java.jsp_AM.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
-import java.util.Map;
 
+import com.KoreaIT.java.jsp_AM.dto.Article;
 import com.KoreaIT.java.jsp_AM.service.ArticleService;
 
 import jakarta.servlet.ServletException;
@@ -40,12 +40,12 @@ public class ArticleController {
 		int totalCnt = articleService.getTotalCnt();
 		int totalPage = (int) Math.ceil(totalCnt / (double) itemsInAPage);
 
-		List<Map<String, Object>> articleRows = articleService.getForPrintArticles(limitFrom, itemsInAPage);
+		List<Article> articles = articleService.getForPrintArticles(limitFrom, itemsInAPage);
 
 		request.setAttribute("page", page);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("totalCnt", totalCnt);
-		request.setAttribute("articleRows", articleRows);
+		request.setAttribute("articles", articles);
 		request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 	}
 
